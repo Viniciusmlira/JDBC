@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import controller.Engine;
-import model.Client;
+import model.Pessoa;
 
 /**
  * @author mra2
@@ -26,7 +26,7 @@ public class InsertFrame {
 	}
 	private JFrame frame;
 
-	private JTextField name, cpf, date, phone1, phone2, phone3, email;
+	private JTextField name, cpf, date, phone1, phone2, phone3, email, sexo;
 
 	public InsertFrame() {
 
@@ -64,6 +64,7 @@ public class InsertFrame {
 		date.setColumns(15);
 		date.setBounds(10, 110, 178, 20);
 		frame.getContentPane().add(date);
+		
 
 		// label -> email
 		email = new JTextField();
@@ -92,6 +93,13 @@ public class InsertFrame {
 		phone3.setColumns(15);
 		phone3.setBounds(10, 230, 178, 20);
 		frame.getContentPane().add(phone3);
+		
+		// label -> sexo
+		sexo = new JTextField();
+		sexo.setText("Sexo");
+		sexo.setColumns(15);
+		sexo.setBounds(10, 260, 178, 20);
+		frame.getContentPane().add(sexo);
 		/*--------------------END SECTION--------------------*/
 
 		JButton clientBtnInsert = new JButton("Inserir Cliente");
@@ -105,8 +113,8 @@ public class InsertFrame {
 				telefones[1] = phone2.getText();
 				telefones[2] = phone3.getText();
 
-				Client novoCliente = new Client(cpf.getText(), name.getText(),
-						date.getText(), email.getText(), telefones);
+				Pessoa novoCliente = new Pessoa(cpf.getText(), name.getText(),
+						date.getText(), email.getText(),"CONSERTAR AQUI" , telefones);
 
 				try {
 					in.query(novoCliente);
