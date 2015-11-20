@@ -11,7 +11,7 @@ Dados e Informação in portuguese), professor [Fernando Fonseca].
 ##### Requirements
 
 Please, go to Oracle website ([here]). After, accept the OTN License Agreement, 
-you must download __ojdbc7_g.jar__ file. 
+you must download __ojdbc7_g.jar__ file. Next, add to build path.
 
 ##### Extra
 
