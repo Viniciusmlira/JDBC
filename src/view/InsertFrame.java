@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import model.Client;
 import controller.Engine;
+import model.Client;
 
 /**
  * @author mra2
@@ -109,7 +109,7 @@ public class InsertFrame {
 						date.getText(), email.getText(), telefones);
 
 				try {
-					in.Insert(novoCliente);
+					in.query(novoCliente);
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (SQLException e1) {

@@ -7,7 +7,7 @@ import view.MainFrame;
  *
  */
 
-public class MainApp {
+public class Main {
 	
 	//start app!
 	public static void main(String[] args) {

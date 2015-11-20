@@ -36,31 +36,25 @@ public class Engine {
 		return con;
 	}
 
-	public void Insert(Client c) throws SQLException, ClassNotFoundException {
-
-		int count_id = 30;
+	/*
+	 * This method allow insert, delete and update data over database
+	 */
+	public void query(Client c) throws SQLException, ClassNotFoundException {
 		Connection con = connectToDatabase(username, password);
 		Statement stmt = con.createStatement();
-
-		int ID = count_id++;
-		String cpf_Func = "510.362.857-78";
-
-		String i = "INSERT INTO tb_cliente VALUES(tp_cliente('"
-				+ c.getCpf()
-				+ "', '"
-				+ c.getName()
-				+ "', '"
-				+ c.getDate()
-				+ "', EMPTY_BLOB(), tp_contato('"
-				+ c.getEmail()
-				+ "',  tp_va_telefones(tp_telefone('81', '"
-				+ c.getPhone()
-				+ "'))),(SELECT REF(e) FROM tb_endereco e WHERE e.id_endereco = "
-				+ ID + "), (SELECT REF(f) FROM tb_funcionario f WHERE f.cpf ='"
-				+ cpf_Func + " ')));";
-
-		stmt.executeQuery(i);
+		String query = "";
+		stmt.executeQuery(query);
 		stmt.close();
 		con.close();
+	}
+	
+	/*
+	 * This method creates a new table!
+	 */
+	public void createTable(Client c) throws SQLException, ClassNotFoundException {
+		Connection con = connectToDatabase(username, password);
+		Statement stmt = con.createStatement();
+		String sql = "";
+		stmt.executeUpdate(sql);
 	}
 }
