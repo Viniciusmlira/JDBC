@@ -12,17 +12,6 @@ public class Photo implements DataModel {
 	public String insert(){
 		return null;
 	}
-	public Statement insertStmt() {
-		File file = new File(path);
-		String insert_picture = "insert into photos(id, photo) values (?, ?)";
-		try {
-			FileInputStream fis = new FileInputStream(file);
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 
 }

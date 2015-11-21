@@ -62,6 +62,9 @@ public class Engine {
 			ps.setString(1, ""+Engine.photoCounter++);
 		    ps.setBinaryStream(2, fis, (int) file.length());
 			ps.executeUpdate();
+			System.out.println("photo adicionada");
+			ps.close();
+			con.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

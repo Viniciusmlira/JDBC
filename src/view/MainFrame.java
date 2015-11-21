@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 250, 260);
+		setBounds(0, 0, 250, 500);
 		setLocationRelativeTo(null);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,13 +53,25 @@ public class MainFrame extends JFrame {
 		//label -> inserir
 		JButton insertBtnClient = new JButton("Inserir funcionário");
 		insertBtnClient.addActionListener(new ActionBtnInsert());
-		insertBtnClient.setBounds(30, 10, 200, 100);
+		insertBtnClient.setBounds(15, 10, 200, 100);
 		panel.add(insertBtnClient);
 		
 		//label -> search
 		JButton searchBtnClient = new JButton("Buscar funcionário");
-		searchBtnClient.setBounds(30, 110, 200, 100);
+		searchBtnClient.setBounds(15, 110, 200, 100);
 		panel.add(searchBtnClient);
+		
+		//label -> search
+		JButton insertPic = new JButton("Add picture");
+		insertPic.setBounds(15, 210, 200, 100);
+		panel.add(insertPic);
+		
+		insertPic.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new InsertFileFrame();
+			}
+		});
 		
 		searchBtnClient.addActionListener(new ActionListener() {
 			@Override
