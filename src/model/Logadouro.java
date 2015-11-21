@@ -9,7 +9,7 @@ public class Logadouro implements DataModel {
 	String cidade;
 	String numero;
 	
-	Logadouro(String cep, String rua, String bairro,String uf, String cidade, String numero){
+	public Logadouro(String cep, String rua, String bairro,String uf, String cidade, String numero){
 		this.cep = cep;
 		this.rua =rua;
 		this.bairro = bairro;

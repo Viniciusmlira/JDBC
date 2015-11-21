@@ -7,9 +7,9 @@ package model;
 
 public class Pessoa implements DataModel {
 
-	private String cpf, name, date, email,sexo;
-	private String[] phone;
-	private Logadouro logadouro;
+	String cpf, name, date, email,sexo;
+	String[] phone;
+	Logadouro logadouro;
 
 	public Pessoa(String cpf, String name, String date, String email, String sexo,
 			String[] phone, Logadouro logadouro) {

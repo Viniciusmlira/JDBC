@@ -1,8 +1,11 @@
 package controller;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Ref;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -42,6 +45,17 @@ public class Engine {
 	/*
 	 * This method allow insert, delete and update data over database
 	 */
+	public void insert(DataModel data) throws ClassNotFoundException, SQLException{
+		Connection con = connectToDatabase(username, password);
+		Statement stmt = con.createStatement();
+		String insertS = data.insert();
+		stmt.executeUpdate(data.insert());
+		stmt.close();
+		con.close();
+		System.out.println("Funcionario Inserido");
+		
+	}
+	
 	public void queryFuncionario(String funcionarioCpf) throws SQLException, ClassNotFoundException {
 		Connection con = connectToDatabase(username, password);
 		Statement stmt = con.createStatement();
@@ -50,9 +64,33 @@ public class Engine {
 		
 		ResultSet rs = stmt.getResultSet ();
 	    int count = 0;
+	    ResultSetMetaData md=  rs.getMetaData();
+	    
+	    
 	    while (rs.next ()){
-	       String idVal = rs.getString("nome");
-	       System.out.println ("nome = " + idVal);
+	    	//get first 5 columns
+	    	for(int i = 1 ; i <= 5;i++){
+	    		String columnName = md.getColumnName(i);
+		    	 String idVal = rs.getString(columnName);
+			     System.out.println (columnName+" = " + idVal);
+		    	
+		    }
+	    	//tp_logadouro
+	    	//tp_fones
+	    	for(int i = 8 ; i <= 9;i++){
+	    		String columnName = md.getColumnName(i);
+		    	 String idVal = rs.getString(columnName);
+			     System.out.println (columnName+" = " + idVal);	
+		    }
+	    	//nested table
+	    	//ResultSet nested = rs.getArray(md.getColumnName(10)).getResultSet(); 
+	    	System.out.println(md.getColumnTypeName(10));
+	    	//ResultSetMetaData nestedmd=  nested.getMetaData();
+//	    	System.out.println("Supervisiona: ");
+//	    	while(nested.next()){
+//	    		
+//	    	}
+	    	
 	       ++count;
 	    }
 	    rs.close ();
