@@ -1,8 +1,12 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Ref;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -24,6 +28,7 @@ public class Engine {
 	static final String URL = "jdbc:oracle:thin:hr/hr@localhost:1521/XE";
 	static final String username = "SYSTEM";
 	static final String password = ""; // local password
+	static int photoCounter = 0;
 
 	public static Connection connectToDatabase(String username, String password)
 			throws ClassNotFoundException {
@@ -45,10 +50,27 @@ public class Engine {
 	/*
 	 * This method allow insert, delete and update data over database
 	 */
+	public void insertPhoto(String path) throws ClassNotFoundException, SQLException {
+		Connection con = connectToDatabase(username, password);
+		File file = new File(path);
+		String insert_picture = "insert into photos(id, photo) values (?, ?)";
+		PreparedStatement ps = null;
+		try {
+			con.setAutoCommit(false);
+			FileInputStream fis = new FileInputStream(file);
+			ps = con.prepareStatement(insert_picture);
+			ps.setString(1, ""+Engine.photoCounter++);
+		    ps.setBinaryStream(2, fis, (int) file.length());
+			ps.executeUpdate();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void insert(DataModel data) throws ClassNotFoundException, SQLException{
 		Connection con = connectToDatabase(username, password);
 		Statement stmt = con.createStatement();
-		String insertS = data.insert();
+		//String insertS = data.insert();
 		stmt.executeUpdate(data.insert());
 		stmt.close();
 		con.close();
