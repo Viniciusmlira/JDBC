@@ -11,8 +11,10 @@ xml XMLType;
 xmlFinal XMLType;
 
 begin
-	stylesheet := TO_CLOB('<?xml version="1.0" ?>	
-	<?xml-stylesheet type="text/css" href="customization.css"?>');
+	stylesheet := TO_CLOB('<?xml version="1.0" ?>
+		<!DOCTYPE AssociadosDevedores SYSTEM "resultado.dtd"> 
+	<?xml-stylesheet type="text/css" href="customization.css"?>
+	');
 	
 	ctx := dbms_xmlgen.newContext('select a.nome, a.cpf, a.data_nascimento, a.endereco.rua as Rua from tb_associado a  where a.status = ''Devendo''');
 	DBMS_XMLGEN.setRowsetTag(ctx, 'AssociadosDevedores');
