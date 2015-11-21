@@ -5,18 +5,19 @@ package model;
  *
  */
 
-public class Client {
+public class Pessoa implements DataModel {
 
-	private String cpf, name, date, email;
+	private String cpf, name, date, email,sexo;
 	private String[] phone;
 
-	public Client(String cpf, String name, String date, String email,
+	public Pessoa(String cpf, String name, String date, String email, String sexo,
 			String[] phone) {
 		this.cpf = cpf;
 		this.name = name;
 		this.date = date;
 		this.email = email;
 		this.phone = phone;
+		this.sexo = sexo;
 	}
 
 	public String getCpf() {
@@ -34,7 +35,10 @@ public class Client {
 	public String getName() {
 		return name;
 	}
-
+	
+	public String getSexo() {
+		return name;
+	}
 	public String[] getPhone() {
 		return phone;
 	}

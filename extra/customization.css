@@ -1,11 +1,11 @@
 @media screen {
 
-	AgenciaPropaganda:before {
-		content: "Lista de Fornecedores";
+	AssociadosDevedores:before {
+		content: "Lista de Associados devedores";
 		font-size: 190%;
 	}
 
-	AgenciaPropaganda {
+	AssociadosDevedores {
 		display: table;
 		color: darkblue;
 		font-weight: bold;
@@ -16,33 +16,54 @@
 		background-image: -o-linear-gradient(silver 200px, white 300px);		/*opera*/
 		background-repeat: repeat-x;
 		background-color: white;
-		width: 90%;
+		width: 80%;
 	}
 	
-	ListaFornecedores{
+	Associado{
 		display: table-row;
 		background-color: white;
 	}
 	
-	CNPJ:before {
-		content: "CNPJ:: ";
+	NOME:before {
+		content: "Nome: ";
 		color: black;
 	}
 	
-	CNPJ{
+	NOME{
 		border: 1px solid gray;
 		display: table-cell;
 		width:230px;
 	}
 	
-	RAZAO_SOCIAL:before {
-		content: "Razão Social: ";
+	DATA_NASCIMENTO:before {
+		content: "Data de nascimento: ";
 		color: black;
 	}
 	
-	RAZAO_SOCIAL{
+	DATA_NASCIMENTO{
 		border: 1px solid gray;
 		display: table-cell;
 		width:230px;
-	}	
+	}
+	CPF:before {
+		content: "CPF: ";
+		color: black;
+	}
+	
+	CPF{
+		border: 1px solid gray;
+		display: table-cell;
+		width:230px;
+	}
+	
+	RUA:before {
+		content: "Rua: ";
+		color: black;
+	}
+	
+	RUA{
+		border: 1px solid gray;
+		display: table-cell;
+		width:230px;
+	}
 }
