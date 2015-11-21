@@ -4,7 +4,7 @@ A simple program that tests connectivity to the JDBC driver.
 
 ## About
 
-JDBC was built by [CIn/UFPE] students Miguel Araújo and Franclin Cabral as an 
+This repository was built by [CIn/UFPE] students Miguel Araújo and Franclin Cabral as an 
 assignment for the [Database course] of 2014.2 (Gerenciamento de 
 Dados e Informação in portuguese), professor [Fernando Fonseca].
 
