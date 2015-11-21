@@ -102,7 +102,7 @@ public class InsertFrame {
 		frame.getContentPane().add(sexo);
 		/*--------------------END SECTION--------------------*/
 
-		JButton clientBtnInsert = new JButton("Inserir Cliente");
+		JButton clientBtnInsert = new JButton("Inserir Funcionário");
 
 		clientBtnInsert.addActionListener(new ActionListener() {
 			@Override
@@ -113,16 +113,16 @@ public class InsertFrame {
 				telefones[1] = phone2.getText();
 				telefones[2] = phone3.getText();
 
-				Pessoa novoCliente = new Pessoa(cpf.getText(), name.getText(),
-						date.getText(), email.getText(),"CONSERTAR AQUI" , telefones);
-
-				try {
-					in.query(novoCliente);
-				} catch (ClassNotFoundException e1) {
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+//				Funcionario novoCliente = new Pessoa(cpf.getText(), name.getText(),
+//						date.getText(), email.getText(),sexo.getText() , telefones);
+//
+//				try {
+//					in.query(novoCliente);
+//				} catch (ClassNotFoundException e1) {
+//					e1.printStackTrace();
+//				} catch (SQLException e1) {
+//					e1.printStackTrace();
+//				}
 
 			}
 		});

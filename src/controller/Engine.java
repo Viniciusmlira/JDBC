@@ -2,10 +2,13 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.Client;
+
+import model.DataModel;
+import model.Funcionario;
 
 /**
  * @author mra2
@@ -16,7 +19,7 @@ public class Engine {
 
 	static final String driver = "oracle.jdbc.driver.OracleDriver";
 	static final String URL = "jdbc:oracle:thin:hr/hr@localhost:1521/XE";
-	static final String username = "system";
+	static final String username = "SYSTEM";
 	static final String password = ""; // local password
 
 	public static Connection connectToDatabase(String username, String password)
@@ -39,11 +42,20 @@ public class Engine {
 	/*
 	 * This method allow insert, delete and update data over database
 	 */
-	public void query(Client c) throws SQLException, ClassNotFoundException {
+	public void queryFuncionario(String funcionarioCpf) throws SQLException, ClassNotFoundException {
 		Connection con = connectToDatabase(username, password);
 		Statement stmt = con.createStatement();
-		String query = "";
-		stmt.executeQuery(query);
+		//String query = "";
+		stmt.executeQuery(funcionarioCpf);
+		
+		ResultSet rs = stmt.getResultSet ();
+	    int count = 0;
+	    while (rs.next ()){
+	       String idVal = rs.getString("nome");
+	       System.out.println ("nome = " + idVal);
+	       ++count;
+	    }
+	    rs.close ();
 		stmt.close();
 		con.close();
 	}
@@ -51,7 +63,7 @@ public class Engine {
 	/*
 	 * This method creates a new table!
 	 */
-	public void createTable(Client c) throws SQLException, ClassNotFoundException {
+	public void createTable(DataModel c) throws SQLException, ClassNotFoundException {
 		Connection con = connectToDatabase(username, password);
 		Statement stmt = con.createStatement();
 		String sql = "";
