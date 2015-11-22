@@ -2,8 +2,10 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,55 +15,56 @@ import javax.swing.WindowConstants;
 import controller.Engine;
 import model.Funcionario;
 
-/**
- * @author mra2
- *
- */
-public class SearchFrame {
+public class SearchFileFrame {
+	
 	private static Engine in;
 	static {
 		in = new Engine();
 	}
-	private JTextField cpf;
 	private JFrame frame;
-	private JTextField name;
 
-	public SearchFrame() {
+	private JTextField id;
+	private ImageIcon image;
+	private JLabel display;
+	
+	public SearchFileFrame(){
 		
 		frame = new JFrame();
 		frame.setTitle("Conectividade com JDBC");
-		frame.setBounds(100, 100, 400, 200);
+		frame.setBounds(100, 100, 800, 700);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
-		//label -> cpf
-		cpf = new JTextField();
-		cpf.setText("CPF");
-		cpf.setColumns(15);
-		cpf.setBounds(10, 64, 178, 20);
-		frame.getContentPane().add(cpf);
+		id = new JTextField();
+		id.setBounds(10, 30, 178, 20);
+		id.setText("Nome");
+		frame.getContentPane().add(id);
+		id.setColumns(15);
 		
 		JButton button = new JButton("Buscar CPF");
-		button.setBounds(198, 63, 100, 23);
-	//	button.setB
+		button.setBounds(198, 30, 100, 23);
+		frame.getContentPane().add(button);
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					in.queryFuncionario(Funcionario.searchById(cpf.getText()));
-				} catch (ClassNotFoundException | SQLException e) {
+					image = in.queryPhotoById(id.getText());
+					display = new JLabel(image);
+					//display.setBounds(0, 90, 800, 600);
+					frame.add(display);
+					frame.pack();
+				} catch (ClassNotFoundException | SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 			}
 		});
-		frame.getContentPane().add(button);
 		
-		JLabel lblBuscarCliente = new JLabel("Buscar funcionario");
-		lblBuscarCliente.setBounds(10, 11, 125, 14);
-		frame.getContentPane().add(lblBuscarCliente);
+		
+		
 		
 	}
+	
+
 }

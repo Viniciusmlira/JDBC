@@ -61,7 +61,7 @@ public class MainFrame extends JFrame {
 		searchBtnClient.setBounds(15, 110, 200, 100);
 		panel.add(searchBtnClient);
 		
-		//label -> search
+		//label -> inserir pic
 		JButton insertPic = new JButton("Add picture");
 		insertPic.setBounds(15, 210, 200, 100);
 		panel.add(insertPic);
@@ -79,5 +79,16 @@ public class MainFrame extends JFrame {
 				new SearchFrame();
 			}
 		});	
+		
+		JButton searchPic = new JButton("Search picture");
+		searchPic.setBounds(15, 310, 200, 100);
+		panel.add(searchPic);
+		
+		searchPic.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new SearchFileFrame();
+			}
+		});
 	}
 }

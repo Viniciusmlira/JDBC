@@ -3,6 +3,8 @@ package controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +15,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.ImageIcon;
 
 import model.DataModel;
 import model.Funcionario;
@@ -50,6 +53,29 @@ public class Engine {
 	/*
 	 * This method allow insert, delete and update data over database
 	 */
+	
+	public ImageIcon queryPhotoById(String id) throws ClassNotFoundException, SQLException, IOException{
+		Connection con = connectToDatabase(username, password);
+		String  sql = "select photo from photos where id = "+id;
+		PreparedStatement stmt = con.prepareStatement(sql);
+	    ResultSet resultSet = stmt.executeQuery();
+	    File image;
+	    String tempFileLocation = "C:\\temp\\image.jpg";
+	    while (resultSet.next()) {
+	      image = new File(tempFileLocation);
+	      FileOutputStream fos = new FileOutputStream(image);
+
+	      byte[] buffer = new byte[1];
+	      java.io.InputStream is = resultSet.getBinaryStream(1);
+	      while (is.read(buffer) > 0) {
+	        fos.write(buffer);
+	      }
+	      fos.close();
+	    }
+	    con.close();
+	    ImageIcon im =new ImageIcon(tempFileLocation);
+	    return im;
+	}
 	public void insertPhoto(String path) throws ClassNotFoundException, SQLException {
 		Connection con = connectToDatabase(username, password);
 		File file = new File(path);
