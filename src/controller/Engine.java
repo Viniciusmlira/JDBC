@@ -30,7 +30,7 @@ public class Engine {
 	static final String driver = "oracle.jdbc.driver.OracleDriver";
 	static final String URL = "jdbc:oracle:thin:hr/hr@localhost:1521/XE";
 	static final String username = "SYSTEM";
-	static final String password = "hunka17"; // local password
+	static final String password = ""; // local password
 	static int photoCounter = 0;
 
 	public static Connection connectToDatabase(String username, String password)
