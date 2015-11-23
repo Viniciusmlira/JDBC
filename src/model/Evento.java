@@ -1,6 +1,6 @@
 package model;
 
-public class Evento {
+public class Evento implements DataModel{
 	
 	private String id;
 	private String descricao;
@@ -33,6 +33,26 @@ public class Evento {
 	public void setDescricao(String descricao) {
 		
 		this.descricao = descricao;
+		
+	}
+	
+	static public String getTable(){
+		
+		return "select * from tb_evento";
+		
+	}
+	
+	static public String searchById(String id){
+		
+		return "select * from tb_evento where codigo_de_id = \'"+id+"\'";
+	}
+
+	@Override
+	public String insert() {
+		
+		String insert =  "insert into tb_evento values(\'"+ this.getID() +"\',\'"+ this.getDescricao() +"\')";
+		
+		return insert;
 		
 	}
 

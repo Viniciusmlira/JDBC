@@ -103,7 +103,7 @@ public class Engine {
 		stmt.executeUpdate(data.insert());
 		stmt.close();
 		con.close();
-		System.out.println("Funcionario Inserido");
+		System.out.println("Inserido");
 		
 	}
 	
@@ -148,6 +148,82 @@ public class Engine {
 		stmt.close();
 		con.close();
 	}
+	
+	public void queryEspaco(String espacoID) throws SQLException, ClassNotFoundException {
+		
+		Connection con = connectToDatabase(username, password);
+		Statement stmt = con.createStatement();
+		stmt.executeQuery(espacoID);
+		
+		ResultSet rs = stmt.getResultSet();
+	    ResultSetMetaData md = rs.getMetaData();
+
+	    while (rs.next()){
+
+	    	for(int i = 1 ; i <= 3;i++){
+	    		String columnName = md.getColumnName(i);
+		    	String idVal = rs.getString(columnName);
+			    System.out.println(columnName+" = " + idVal);
+		    	
+		    }
+
+	    }
+	    
+	    rs.close();
+		stmt.close();
+		con.close();
+	}
+	
+	public void queryEvento(String eventoID) throws SQLException, ClassNotFoundException {
+		
+		Connection con = connectToDatabase(username, password);
+		Statement stmt = con.createStatement();
+		stmt.executeQuery(eventoID);
+		
+		ResultSet rs = stmt.getResultSet();
+	    ResultSetMetaData md = rs.getMetaData();
+
+	    while (rs.next()){
+
+	    	for(int i = 1 ; i <= 2;i++){
+	    		String columnName = md.getColumnName(i);
+		    	String idVal = rs.getString(columnName);
+			    System.out.println(columnName+" = " + idVal);
+		    	
+		    }
+
+	    }
+	    
+	    rs.close();
+		stmt.close();
+		con.close();
+	}
+	
+	public void queryAtividade(String atividadeID) throws SQLException, ClassNotFoundException {
+		
+		Connection con = connectToDatabase(username, password);
+		Statement stmt = con.createStatement();
+		stmt.executeQuery(atividadeID);
+		
+		ResultSet rs = stmt.getResultSet();
+	    ResultSetMetaData md = rs.getMetaData();
+
+	    while (rs.next()){
+
+	    	for(int i = 1 ; i <= 5;i++){
+	    		String columnName = md.getColumnName(i);
+		    	String idVal = rs.getString(columnName);
+			    System.out.println(columnName+" = " + idVal);
+		    	
+		    }
+
+	    }
+	    
+	    rs.close();
+		stmt.close();
+		con.close();
+	}
+	
 	
 	/*
 	 * This method creates a new table!

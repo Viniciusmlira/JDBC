@@ -1,14 +1,14 @@
 package model;
 
-public class Atividade {
+public class Atividade implements DataModel {
 	
 	private String id;
 	private String nome;
 	private String diaSemana;
 	private String horario;
-	private int duracao;
+	private String duracao;
 	
-	public Atividade(String id, String nome, String diaSemana, String horario, int duracao) {
+	public Atividade(String id, String nome, String diaSemana, String horario, String duracao) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -66,15 +66,35 @@ public class Atividade {
 		
 	}
 	
-	public int getDuracao() {
+	public String getDuracao() {
 		
 		return this.duracao;
 		
 	}
 	
-	public void setDuracao(int duracao) {
+	public void setDuracao(String duracao) {
 		
 		this.duracao = duracao;
+		
+	}
+	
+	static public String getTable(){
+		
+		return "select * from tb_atividade";
+		
+	}
+	
+	static public String searchById(String id){
+		
+		return "select * from tb_atividade where codigo_de_id = \'"+id+"\'";
+	}
+
+	@Override
+	public String insert() {
+		
+		String insert =  "insert into tb_atividade values(\'"+ this.getID() +"\',\'"+ this.getNome()+"\',\'"+ this.getDiaSemana() +"\',\'"+ this.getHorario() +"\',\'"+ this.getDuracao() +"\')";
+		
+		return insert;
 		
 	}
 
