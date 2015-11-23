@@ -86,6 +86,26 @@ public class MainFrame extends JFrame {
 		insertBtnAtividade.setBounds(215, 210, 200, 100);
 		panel.add(insertBtnAtividade);
 		
+		//label -> inserir associado
+		JButton insertBtnAssociado = new JButton("Inserir Associado");
+		insertBtnAssociado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new InsertAssociadoFrame();
+			}		
+		});
+		insertBtnAssociado.setBounds(215, 410, 200, 100);
+		panel.add(insertBtnAssociado);
+		
+		//label -> search associado
+		JButton searchBtnAssociado = new JButton("Buscar Associado");
+		searchBtnAssociado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new SearchAssociadoFrame();
+			}		
+		});
+		searchBtnAssociado.setBounds(215, 510, 200, 100);
+		panel.add(searchBtnAssociado);
+		
 		//label -> search espaco
 		JButton searchBtnEspaco = new JButton("Buscar Espaço");
 		searchBtnEspaco.addActionListener(new ActionListener() {

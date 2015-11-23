@@ -30,7 +30,7 @@ public class Engine {
 	static final String driver = "oracle.jdbc.driver.OracleDriver";
 	static final String URL = "jdbc:oracle:thin:hr/hr@localhost:1521/XE";
 	static final String username = "SYSTEM";
-	static final String password = ""; // local password
+	static final String password = "hunka17"; // local password
 	static int photoCounter = 0;
 
 	public static Connection connectToDatabase(String username, String password)
@@ -120,7 +120,7 @@ public class Engine {
 	    
 	    while (rs.next ()){
 	    	//get first 5 columns
-	    	for(int i = 1 ; i <= 5;i++){
+	    	for(int i = 1 ; i <= 10;i++){
 	    		String columnName = md.getColumnName(i);
 		    	 String idVal = rs.getString(columnName);
 			     System.out.println (columnName+" = " + idVal);
@@ -144,9 +144,48 @@ public class Engine {
 	    	
 	       ++count;
 	    }
+	    	
 	    rs.close ();
 		stmt.close();
 		con.close();
+	}
+	
+	public void queryAssociado(String associadoCpf) throws SQLException, ClassNotFoundException {
+		Connection con = connectToDatabase(username, password);
+		Statement stmt = con.createStatement();
+		stmt.executeQuery(associadoCpf);
+		
+		ResultSet rs = stmt.getResultSet();
+	    ResultSetMetaData md=  rs.getMetaData();
+	    
+	    while (rs.next ()){
+	    	//get first 5 columns
+	    	for(int i = 1 ; i <= 5;i++){
+	    		String columnName = md.getColumnName(i);
+		    	String idVal = rs.getString(columnName);
+			    System.out.println (columnName+" = " + idVal);	
+		    }
+	    	
+	    	//tp_logadouro
+	    	//tp_fones
+	    	
+	    	//data associacao + status
+	    	for(int i = 8 ; i <= 9;i++){
+	    		String columnName = md.getColumnName(i);
+		    	String idVal = rs.getString(columnName);
+			    System.out.println (columnName+" = " + idVal);	
+		    }
+	    	
+	    	//dependente_nested
+	    	//not working
+	    	System.out.println(md.getColumnTypeName(10));
+
+	    }
+	    
+	    rs.close ();
+		stmt.close();
+		con.close();
+		
 	}
 	
 	public void queryEspaco(String espacoID) throws SQLException, ClassNotFoundException {
