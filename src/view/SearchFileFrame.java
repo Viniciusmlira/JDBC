@@ -50,10 +50,21 @@ public class SearchFileFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					image = in.queryPhotoById(id.getText());
-					display = new JLabel(image);
-					//display.setBounds(0, 90, 800, 600);
-					frame.add(display);
-					frame.pack();
+					
+					display = new JLabel();
+					display.setBounds(100, 100, 800, 700);
+					display.setIcon(image);
+					display.setVisible(true);
+					
+					JFrame f = new JFrame();
+					f.setTitle("Buscar Imagem");
+					f.setBounds(100, 100, 800, 700);
+					f.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+					f.getContentPane().setLayout(null);
+					f.setVisible(true);
+					
+					f.add(display);
+					//frame.pack();
 				} catch (ClassNotFoundException | SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
