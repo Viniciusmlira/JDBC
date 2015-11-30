@@ -1,15 +1,37 @@
 set serveroutput on;
+
+create or replace directory ctemp as 'c:\temp';
+
 declare
 ctx dbms_xmlgen.ctxhandle;
 resultado clob;
+resultado2 clob;
+stylesheet clob;
+xml XMLType;
+xmlFinal XMLType;
 
 begin
-	ctx := dbms_xmlgen.newContext('SELECT F.cnpj AS CNPJ, F.razao AS RAZAO_SOCIAL FROM tb_fornecedor F');
-	DBMS_XMLGEN.setRowsetTag(ctx, 'AgenciaPropaganda');
-	DBMS_XMLGEN.setRowTag(ctx,'ListaFornecedores');
+	stylesheet := TO_CLOB('<?xml version="1.0" ?>
+		<!DOCTYPE AssociadosDevedores SYSTEM "resultado.dtd"> 
+	<?xml-stylesheet type="text/css" href="customization.css"?>
+	');
+	
+	ctx := dbms_xmlgen.newContext('select a.nome, a.cpf, a.data_nascimento, a.endereco.rua as Rua from tb_associado a  where a.status = ''Devendo''');
+	DBMS_XMLGEN.setRowsetTag(ctx, 'AssociadosDevedores');
+	DBMS_XMLGEN.setRowTag(ctx,'Associado');
+	
 	resultado:=dbms_xmlgen.getXML(ctx);
 	dbms_output.put_line(resultado);
 	dbms_xmlgen.closeContext(ctx);
+	
+	xml:= xmltype(resultado);
+	
+	resultado2 := xml.extract('/AssociadosDevedores').getclobval();
+	DBMS_LOB.APPEND(stylesheet , resultado2);
+	--COMMIT;
+	dbms_xslprocessor.clob2file( stylesheet, 'CTEMP', 'resultado.xml');
 end;
 /
+
+
 

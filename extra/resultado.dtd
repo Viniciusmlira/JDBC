@@ -1,0 +1,6 @@
+<!DOCTYPE AssociadosDevedores 
+[ <!ELEMENT Associado [
+ <!ELEMENT NOME (#PCDATA)>
+ <!ELEMENT CPF (#PCDATA)>
+ <!ELEMENT DATA_NASCIMENTO (#PCDATA)>
+ <!ELEMENT RUA (#PCDATA)>]> ] >

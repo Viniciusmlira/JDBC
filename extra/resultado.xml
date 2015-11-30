@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+		<!DOCTYPE AssociadosDevedores SYSTEM "resultado.dtd">
+	<?xml-stylesheet type="text/css" href="customization.css"?><AssociadosDevedores>
+  <Associado>
+    <NOME>Casey O, Hatfield.</NOME>
+    <CPF>944.303.518-56</CPF>
+    <DATA_NASCIMENTO>08/06/89</DATA_NASCIMENTO>
+    <RUA>Rua 249</RUA>
+  </Associado>
+  <Associado>
+    <NOME>Ezekiel M, Owens.</NOME>
+    <CPF>691.497.890-21</CPF>
+    <DATA_NASCIMENTO>16/03/72</DATA_NASCIMENTO>
+    <RUA>Avenida Caetano Arcuri Spinelli</RUA>
+  </Associado>
+  <Associado>
+    <NOME>Laith A, Barber.</NOME>
+    <CPF>207.751.969-32</CPF>
+    <DATA_NASCIMENTO>26/09/79</DATA_NASCIMENTO>
+    <RUA>Avenida dos Ex-Combatentes</RUA>
+  </Associado>
+  <Associado>
+    <NOME>Nathan T, Dean.</NOME>
+    <CPF>508.386.976-60</CPF>
+    <DATA_NASCIMENTO>20/03/59</DATA_NASCIMENTO>
+    <RUA>Avenida SÃ£o Lucas</RUA>
+  </Associado>
+  <Associado>
+    <NOME>Iona H, Coleman.</NOME>
+    <CPF>481.694.519-01</CPF>
+    <DATA_NASCIMENTO>16/11/85</DATA_NASCIMENTO>
+    <RUA>Avenida JaraguÃ¡</RUA>
+  </Associado>
+  <Associado>
+    <NOME>Bruno C, Newton.</NOME>
+    <CPF>232.356.004-58</CPF>
+    <DATA_NASCIMENTO>17/11/93</DATA_NASCIMENTO>
+    <RUA>Avenida Alfredo Moreira</RUA>
+  </Associado>
+  <Associado>
+    <NOME>Maggie R, Graham.</NOME>
+    <CPF>678.046.275-65</CPF>
+    <DATA_NASCIMENTO>28/12/79</DATA_NASCIMENTO>
+    <RUA>Avenida Francisco Torres</RUA>
+  </Associado>
+</AssociadosDevedores>

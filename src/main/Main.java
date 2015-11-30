@@ -2,11 +2,6 @@ package main;
 
 import view.MainFrame;
 
-/**
- * @author mra2
- *
- */
-
 public class Main {
 	
 	//start app!
